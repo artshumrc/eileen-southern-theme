@@ -1,7 +1,7 @@
 {
-  "name": "thanksroy",
+  "name": "eileensouthern",
   "version": "2.5.0",
-  "description": "\"A tribute to Roy Rosenzweig, with updated typography and responsive styles.\"",
+  "description": "",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
@@ -17,19 +17,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/omeka/theme-thanksroy.git"
+    "url": "git+https://github.com/artshumrc/eileen-southern-theme.git"
   },
   "keywords": [
     "\"white",
     "black",
     "serif\""
   ],
-  "author": "\"Roy Rosenzweig Center for History and New Media\"",
+  "author": "Cole Crawford",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/omeka/theme-thanksroy/issues"
+    "url": "https://github.com/artshumrc/eileen-southern-theme/issues"
   },
-  "homepage": "https://github.com/omeka/theme-thanksroy#readme",
+  "homepage": "https://github.com/artshumrc/eileen-southern-theme#readme",
   "browserslist": [
     "> 5%",
     "> 1% in US"
