@@ -2,28 +2,34 @@
 
     </div><!-- end wrap -->
 
-
     <footer role="contentinfo">
-
-        <div id="footer-text">
-            <?php echo get_theme_option('Footer Text'); ?>
-            <?php if ((get_theme_option('Display Footer Copyright') == 1) && $copyright = option('copyright')): ?>
-                <p><?php echo $copyright; ?></p>
-            <?php endif; ?>
-            <p><?php echo __('Proudly powered by <a href="http://omeka.org">Omeka</a>.'); ?></p>
-        </div>
-
-        <?php fire_plugin_hook('public_footer', array('view' => $this)); ?>
-
-    </footer><!-- end footer -->
+      <ul class="bottom-nav">
+        <li><a href="biography">Biography</a></li>
+        <li>|</li>
+        <li><a href="map">Map</a></li>
+        <li>|</li>
+        <li><a href="timeline">Timeline</a></li>
+        <li>|</li>
+        <li><a href="publications">Publications</a></li>
+        <li>|</li>
+         <li><a href="gallery">Gallery</a></li>
+        <li>|</li>
+        <li><a href="interviews">Interviews</a></li>
+      </ul>
+    </footer>
+    <div class="footer-image"></div>
+    <!-- end footer -->
 
     <script type="text/javascript">
-    jQuery(document).ready(function () {
-        Omeka.showAdvancedForm();
-        Omeka.skipNav();
-        Omeka.megaMenu('.no-touchevents #primary-nav');
-        ThanksRoy.mobileMenu();
-    });
+        jQuery(document).ready(function () {
+            Omeka.showAdvancedForm();
+            Omeka.skipNav();
+            Omeka.megaMenu('.no-touchevents #primary-nav');
+            ThanksRoy.mobileMenu();
+        });
+        AOS.init({
+            easing: 'ease-in-out-sine',
+        });
     </script>
 
 </body>
