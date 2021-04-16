@@ -25,3 +25,22 @@ function thanksroy_brighten($color, $steps) {
 
      return '#'.$r_hex.$g_hex.$b_hex;
 }
+
+function debug_to_console( $data ) {
+	echo "<script>
+		console.log(" . json_encode($data) . ");
+		</script>";
+}
+
+/**
+ * Get the main navigation for the Eileen Southern site.
+ */
+function eileen_nav_main()
+{
+    $view = get_view();
+    $nav = new Omeka_Navigation;
+    $nav->loadAsOption(Omeka_Navigation::PUBLIC_NAVIGATION_MAIN_OPTION_NAME);
+    $nav->addPagesFromFilter(Omeka_Navigation::PUBLIC_NAVIGATION_MAIN_FILTER_NAME);
+    return $view->navigation()->menu($nav);
+    // return $view->navigation()->menu($nav)->setPartial('/partials/menu');
+}

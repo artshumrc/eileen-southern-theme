@@ -31,6 +31,12 @@
     <?php
     queue_css_file(array('iconfonts','style'));
     queue_css_url('//fonts.googleapis.com/css?family=PT+Serif:400,700,400italic,700italic');
+
+    /** Southern CSS */
+    queue_css_file('aos');
+    queue_css_url('//fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
+    queue_css_url('//fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
+
     echo head_css();
 
     echo theme_header_background();
@@ -45,54 +51,7 @@
     ($titleColor = get_theme_option('header_title_color')) || ($titleColor = "#000000");
     ?>
     <style>
-        body {
-            background-color: <?php echo $backgroundColor; ?>;
-            color: <?php echo $textColor; ?>;
-        }
-        #site-title a:link, #site-title a:visited,
-        #site-title a:active, #site-title a:hover {
-            color: <?php echo $titleColor; ?>;
-            <?php if (get_theme_option('header_background')): ?>
-            text-shadow: 0px 0px 20px #000;
-            <?php endif; ?>
-        }
-        a:link {
-            color: <?php echo $linkColor; ?>;
-        }
-        a:visited {
-            color: <?php echo thanksroy_brighten($linkColor, 40); ?>;
-        }
-        a:hover, a:active, a:focus {
-            color: <?php echo thanksroy_brighten($linkColor, -40); ?>;
-        }
-
-        .button, button,
-        input[type="reset"],
-        input[type="submit"],
-        input[type="button"],
-        .pagination_next a,
-        .pagination_previous a {
-          background-color: <?php echo $buttonColor; ?>;
-          color: <?php echo $buttonTextColor; ?> !important;
-        }
-
-        #search-form input[type="text"] {
-            border-color: <?php echo $buttonColor; ?>
-        }
-
-        @media (max-width:768px) {
-            #primary-nav li {
-                background-color: <?php echo thanksroy_brighten($buttonColor, 40); ?>;
-            }
-
-            #primary-nav li ul li {
-                background-color: <?php echo thanksroy_brighten($buttonColor, 20); ?>;
-            }
-
-            #primary-nav li li li {
-                background-color: <?php echo thanksroy_brighten($buttonColor, -20); ?>;
-            }
-        }
+ 
     </style>
     <!-- JavaScripts -->
     <?php
@@ -100,6 +59,7 @@
     queue_js_file('vendor/selectivizr', 'javascripts', array('conditional' => '(gte IE 6)&(lte IE 8)'));
     queue_js_file('vendor/respond');
     queue_js_file('vendor/jquery-accessibleMegaMenu');
+    queue_js_file('vendor/aos'); /** Southern */
     queue_js_file('globals');
     queue_js_file('default');
     echo head_js();
@@ -115,16 +75,39 @@
         </header>
 
         <div id="wrap">
-            <div class="menu-button button">Menu</div>
-            <nav id="primary-nav" role="navigation">
-                <?php echo public_nav_main(array('role' => 'navigation')); ?>
-                <div id="search-container" role="search">
-                    <?php if (get_theme_option('use_advanced_search') === null || get_theme_option('use_advanced_search')): ?>
-                    <?php echo search_form(array('show_advanced' => true)); ?>
-                    <?php else: ?>
-                    <?php echo search_form(); ?>
-                    <?php endif; ?>
+            <div class="nav-container" id="navbar">
+                <div class="logo">
+                    <h2><a href="/">Eileen Southern</a></h2>
                 </div>
-            </nav>
+                <!-- <div class="menu-button button">Menu</div> -->
+                <nav>
+                    <input class="menu-btn" type="checkbox" id="menu-btn" />
+                    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+                    <ul class="menu">
+                        <li class="category-name dark-yellow pad-top">Exhibition
+                            <ul>
+                                <li class="page-link dark-yellow-bg"><a href="biography">Biography</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="map">Map</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="timeline">Timeline</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="publications">Publications</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="scholarship">Renaissance scholarship</a></li>
+                            </ul>
+                        </li>
+                        <li class="category-name light-teal">Gallery
+                            <ul>
+                                <li class="page-link light-teal-bg"><a href="gallery">Gallery Images</a></li>
+                                <li class="page-link light-teal-bg"><a href="interviews">Interviews</a></li>
+                            </ul>
+                        </li>
+                        <li class="category-name orange">About
+                            <ul>
+                                <li class="page-link orange-bg"><a href="team">Our Team</a></li>
+                                <li class="page-link orange-bg"><a href="glossary">Glossary</a></li>
+                                <li class="page-link orange-bg"><a href="contact">Contact</a></li>
+                            </ul>
+                        </li>
+                    </ul>                   
+                </nav>
+            </div>
             <div id="content" role="main" tabindex="-1">
                 <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>
