@@ -4,15 +4,17 @@
 
     <footer role="contentinfo">
       <ul class="bottom-nav">
-        <li><a href="biography">Biography</a></li>
-        <li>|</li>
-        <li><a href="map">Map</a></li>
+        <li><a href="biography">Life + Career</a></li>
         <li>|</li>
         <li><a href="timeline">Timeline</a></li>
         <li>|</li>
-        <li><a href="publications">Publications</a></li>
+        <li><a href="scholarship">Scholarship</a></li>
         <li>|</li>
-         <li><a href="gallery">Gallery</a></li>
+        <li><a href="teaching">Teaching</a></li>
+        <li>|</li>
+        <li><a href="map">Map</a></li>
+        <li>|</li>
+        <li><a href="gallery">Gallery</a></li>
         <li>|</li>
         <li><a href="interviews">Interviews</a></li>
       </ul>
