@@ -77,8 +77,10 @@
         <div id="wrap">
             <div class="nav-container" id="navbar">
             <div class="logo">
-                <h2><a href="index.html">Eileen Southern</a></h2>
-        	    <h3 class="subtitle"><a href="index.html">And the Music of<br>Black Americans</a></h3>
+                <a href="/">
+                    <h2>Eileen Southern</h2>
+        	        <h3 class="subtitle">And the Music of<br>Black Americans</h3>
+                </a>    
             </div>
             <!-- <div class="menu-button button">Menu</div> -->
             <nav>
