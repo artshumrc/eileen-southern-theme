@@ -105,7 +105,7 @@
                     </li>
                     <li class="category-name orange">About
                         <ul>
-                            <li class="page-link orange-bg"><a href="about.html">About the Project</a></li>
+                            <li class="page-link orange-bg"><a href="about">About the Project</a></li>
                             <li class="page-link orange-bg"><a href="glossary">Glossary</a></li>
                             <li class="page-link orange-bg"><a href="team">Our Team</a></li>
                             <li class="page-link orange-bg"><a href="contact">Contact</a></li>

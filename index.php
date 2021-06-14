@@ -1,5 +1,4 @@
 <?php echo head(array('bodyid'=>'home', 'bodyclass' =>'two-col')); ?>
-
 <header>
     <h1 class="page-title txt-center index-title" data-aos="fade-in">
         <?php
