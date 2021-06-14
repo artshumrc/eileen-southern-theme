@@ -76,38 +76,41 @@
 
         <div id="wrap">
             <div class="nav-container" id="navbar">
-                <div class="logo">
-                    <h2><a href="/">Eileen Southern</a></h2>
-                </div>
-                <!-- <div class="menu-button button">Menu</div> -->
-                <nav>
-                    <input class="menu-btn" type="checkbox" id="menu-btn" />
-                    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-                    <ul class="menu">
-                        <li class="category-name dark-yellow pad-top">Exhibition
-                            <ul>
-                                <li class="page-link dark-yellow-bg"><a href="biography">Biography</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="map">Map</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="timeline">Timeline</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="publications">Publications</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="scholarship">Renaissance scholarship</a></li>
-                            </ul>
-                        </li>
-                        <li class="category-name light-teal">Gallery
-                            <ul>
-                                <li class="page-link light-teal-bg"><a href="gallery">Gallery Images</a></li>
-                                <li class="page-link light-teal-bg"><a href="interviews">Interviews</a></li>
-                            </ul>
-                        </li>
-                        <li class="category-name orange">About
-                            <ul>
-                                <li class="page-link orange-bg"><a href="team">Our Team</a></li>
-                                <li class="page-link orange-bg"><a href="glossary">Glossary</a></li>
-                                <li class="page-link orange-bg"><a href="contact">Contact</a></li>
-                            </ul>
-                        </li>
-                    </ul>                   
-                </nav>
+            <div class="logo"><h2><a href="index.html">Eileen Southern</a></h2>
+        	    <h3 class="subtitle"><a href="index.html">And the Music of<br>Black Americans</a></h3>
+            </div>
+            <!-- <div class="menu-button button">Menu</div> -->
+            <nav>
+                <input class="menu-btn" type="checkbox" id="menu-btn" />
+                <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+                <ul class="menu">
+                    <li class="category-name dark-yellow pad-top">Exhibition
+                        <ul>
+                            <li class="page-link dark-yellow-bg"><a href="biography">Life + Career</a></li>
+                            <li class="page-link dark-yellow-bg"><a href="timeline">Timeline</a></li>
+                            <li class="page-link dark-yellow-bg"><a href="scholarship">Scholarship</a></li>
+                            <li class="page-link dark-yellow-bg"><a href="teaching">Teaching</a></li>
+                            <li class="page-link dark-yellow-bg"><a href="map">Map</a></li>
+
+                        </ul>
+                    </li>
+                    <li class="category-name light-teal">Gallery
+                        <ul>
+                            <li class="page-link light-teal-bg"><a href="gallery">Images</a></li>
+                            <li class="page-link light-teal-bg"><a href="interviews">Interviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="category-name orange">About
+                        <ul>
+                            <li class="page-link orange-bg"><a href="about.html">About the Project</a></li>
+                            <li class="page-link orange-bg"><a href="glossary">Glossary</a></li>
+                            <li class="page-link orange-bg"><a href="team">Our Team</a></li>
+                            <li class="page-link orange-bg"><a href="contact">Contact</a></li>
+                            <li class="page-link orange-bg"><a href="bibliography">Bibliography</a></li>
+                        </ul>
+                    </li>
+                </ul>                   
+            </nav>
             </div>
             <div id="content" role="main" tabindex="-1">
                 <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>
