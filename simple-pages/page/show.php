@@ -1,33 +1,32 @@
-<?php echo head(array(
-    'title' => metadata('simple_pages_page', 'title'),
-    'bodyclass' => 'page simple-page',
-    'bodyid' => metadata('simple_pages_page', 'slug')
-));
+<?php
+    echo head(array(
+        'title' => metadata('simple_pages_page', 'title'),
+        'bodyclass' => 'page simple-page',
+        'bodyid' => metadata('simple_pages_page', 'slug')
+    ));
 
-/** Set up variables based on page */
-$curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
-$requestUri = $_SERVER['REQUEST_URI'];
-$pageName = ltrim($requestUri, '/'); // strip the leading slash
+    /** Set up variables based on page */
+    $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
+    $requestUri = $_SERVER['REQUEST_URI'];
+    $pageName = ltrim($requestUri, '/'); // strip the leading slash
 
-function getBanner($page){
-    $banner_var = $page . '_banner';
-    $banner = get_theme_option($banner_var);
-    if($banner){
-        return '/files/theme_uploads/' . $banner;
-    } else {
-        return false;
+    function getBanner($page){
+        $banner_var = $page . '_banner';
+        $banner = get_theme_option($banner_var);
+        if($banner){
+            return '/files/theme_uploads/' . $banner;
+        } else {
+            return false;
+        }
+        // $banner = '/files/theme_uploads/' . get_theme_option($banner_var);
+        // return $banner;
     }
-    // $banner = '/files/theme_uploads/' . get_theme_option($banner_var);
-    // return $banner;
-}
 
-function getBannerCaption($page){
-    $caption_var = $page . '_banner_caption';
-    $caption = get_theme_option($caption_var);
-    return $caption;
-}
-
-
+    function getBannerCaption($page){
+        $caption_var = $page . '_banner_caption';
+        $caption = get_theme_option($caption_var);
+        return $caption;
+    }
 ?>
 
 <main>
