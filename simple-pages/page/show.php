@@ -18,8 +18,6 @@
         } else {
             return false;
         }
-        // $banner = '/files/theme_uploads/' . get_theme_option($banner_var);
-        // return $banner;
     }
 
     function getBannerCaption($page){
@@ -45,12 +43,5 @@
         echo $this->shortcodes($text);
     ?>
 </main>
-<!-- <h1><?php echo metadata('simple_pages_page', 'title'); ?></h1>
-<div id="primary">
-    <?php
-    $text = metadata('simple_pages_page', 'text', array('no_escape' => true));
-    echo $this->shortcodes($text);
-    ?>
-</div> -->
 
 <?php echo foot(); ?>
