@@ -65,55 +65,71 @@
     echo head_js();
     ?>
 </head>
+
+<?php
+    // set up body
+    $requestUri = $_SERVER['REQUEST_URI'];
+    function pageTitle($self){
+        if(!property_exists($self, 'title')){
+            return "Exhibition";
+        } else {
+            return $self->title;
+        }
+    }
+?>
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
     <a href="#content" id="skipnav"><?php echo __('Skip to main content'); ?></a>
     <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
 
-        <header role="banner">
-            <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-            <div id="site-title"><?php echo link_to_home_page(theme_logo()); ?></div>
+        <header>
+            <h1 class="page-title txt-center aos-init aos-animate" data-aos="fade-in">
+                <?php 
+                    echo pageTitle($this);
+                ?>
+            </h1>
         </header>
 
         <div id="wrap">
             <div class="nav-container" id="navbar">
-            <div class="logo">
-                <a href="/">
-                    <h2>Eileen Southern</h2>
-        	        <h3 class="subtitle">And the Music of<br>Black Americans</h3>
-                </a>    
-            </div>
-            <!-- <div class="menu-button button">Menu</div> -->
-            <nav>
-                <input class="menu-btn" type="checkbox" id="menu-btn" />
-                <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-                <ul class="menu">
-                    <li class="category-name dark-yellow pad-top">Exhibition
-                        <ul>
-                            <li class="page-link dark-yellow-bg"><a href="biography">Life + Career</a></li>
-                            <li class="page-link dark-yellow-bg"><a href="timeline">Timeline</a></li>
-                            <li class="page-link dark-yellow-bg"><a href="scholarship">Scholarship</a></li>
-                            <li class="page-link dark-yellow-bg"><a href="teaching">Teaching</a></li>
-                            <li class="page-link dark-yellow-bg"><a href="map">Map</a></li>
+                <div class="logo">
+                    <a href="/">
+                        <h2>Eileen Southern</h2>
+                        <h3 class="subtitle">And the Music of<br>Black Americans</h3>
+                    </a>    
+                </div>
+                <!-- <div class="menu-button button">Menu</div> -->
+                <nav>
+                    <input class="menu-btn" type="checkbox" id="menu-btn" />
+                    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+                    <ul class="menu">
+                        <li class="category-name dark-yellow pad-top">Exhibition
+                            <ul>
+                                <li class="page-link dark-yellow-bg"><a href="career">Life + Career</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="timeline">Timeline</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="scholarship">Scholarship</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="teaching">Teaching</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="map">Map</a></li>
 
-                        </ul>
-                    </li>
-                    <li class="category-name light-teal">Gallery
-                        <ul>
-                            <li class="page-link light-teal-bg"><a href="gallery">Images</a></li>
-                            <li class="page-link light-teal-bg"><a href="interviews">Interviews</a></li>
-                        </ul>
-                    </li>
-                    <li class="category-name orange">About
-                        <ul>
-                            <li class="page-link orange-bg"><a href="about">About the Project</a></li>
-                            <li class="page-link orange-bg"><a href="glossary">Glossary</a></li>
-                            <li class="page-link orange-bg"><a href="team">Our Team</a></li>
-                            <li class="page-link orange-bg"><a href="contact">Contact</a></li>
-                            <li class="page-link orange-bg"><a href="bibliography">Bibliography</a></li>
-                        </ul>
-                    </li>
-                </ul>                   
-            </nav>
+                            </ul>
+                        </li>
+                        <li class="category-name light-teal">Gallery
+                            <ul>
+                                <li class="page-link light-teal-bg"><a href="gallery">Images</a></li>
+                                <li class="page-link light-teal-bg"><a href="interviews">Interviews</a></li>
+                            </ul>
+                        </li>
+                        <li class="category-name orange">About
+                            <ul>
+                                <li class="page-link orange-bg"><a href="about">About the Project</a></li>
+                                <li class="page-link orange-bg"><a href="glossary">Glossary</a></li>
+                                <li class="page-link orange-bg"><a href="team">Our Team</a></li>
+                                <li class="page-link orange-bg"><a href="contact">Contact</a></li>
+                                <li class="page-link orange-bg"><a href="bibliography">Bibliography</a></li>
+                            </ul>
+                        </li>
+                    </ul>                   
+                </nav>
             </div>
+
             <div id="content" role="main" tabindex="-1">
                 <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>

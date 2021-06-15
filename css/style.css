@@ -157,7 +157,7 @@ header {
 	background-color: black;
 	height:500px;
 	position: fixed;
-	top:0;
+	/* top:0; /* For some reason this is hiding the title only on the homepage */
 	z-index: -1;
 
 }
