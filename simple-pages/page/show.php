@@ -7,23 +7,28 @@
 /** Set up variables based on page */
 $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
 $requestUri = $_SERVER['REQUEST_URI'];
-$bannerUri = '/themes/eileen-southern-theme/images/';
-switch($requestUri){
-    case '/about':
-        $bannerUri .= 'page_banner_12.png';
-        break;
+$pageName = ltrim($requestUri, '/'); // strip the leading slash
+
+function getBanner($page){
+    $banner_var = $page . '_banner';
+    $banner = '/files/theme_uploads/' . get_theme_option($banner_var);
+    return $banner;
+}
+
+function getBannerCaption($page){
+    $caption_var = $page . '_banner_caption';
+    $caption = get_theme_option($caption_var);
+    return $caption;
 }
 
 
-
-
 ?>
-<!-- <h3 style="color:white"><?php echo $curPageName . ' ' . $_SERVER['REQUEST_URI']?></h3> -->
 <!-- <p id="simple-pages-breadcrumbs" class="navigation secondary-nav"><?php echo simple_pages_display_breadcrumbs(); ?></p> -->
+
 <main>
     <div class="banners">
-        <img src="<?php echo $bannerUri; ?>">
-        <p class="caption">Image caption ...</p>
+        <img src="<?php echo getBanner($pageName); ?>">
+        <p class="caption"><?php echo getBannerCaption($pageName); ?></p>
     </div>
     <div class="container-narrow lengthen-page">
     <?php
