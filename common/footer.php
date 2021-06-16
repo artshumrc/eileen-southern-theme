@@ -14,7 +14,7 @@
         <li>|</li>
         <li><a href="/map">Map</a></li>
         <li>|</li>
-        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/items/browse">Gallery</a></li>
         <li>|</li>
         <li><a href="/interviews">Interviews</a></li>
       </ul>
