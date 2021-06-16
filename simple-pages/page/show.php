@@ -42,7 +42,8 @@
         $text = metadata('simple_pages_page', 'text', array('no_escape' => true));
         echo $this->shortcodes($text);
     ?>
-    <!-- events start -->
+
+    <!-- TIMELINE events start -->
     <?php if($pageName == 'timeline'): ?>
     <div class="container-wide white-bg">
     <?php

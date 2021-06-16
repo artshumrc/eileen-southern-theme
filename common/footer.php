@@ -4,7 +4,7 @@
 
     <footer role="contentinfo">
       <ul class="bottom-nav">
-        <li><a href="/biography">Life + Career</a></li>
+        <li><a href="/career">Life + Career</a></li>
         <li>|</li>
         <li><a href="/timeline">Timeline</a></li>
         <li>|</li>

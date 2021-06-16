@@ -319,6 +319,7 @@ main {
 	padding: 1em 12em 2em;
 	margin: 0 auto;
 	background-color: white;
+	min-height: calc(100vh - 939px);
 }
 
 .container-wide {
@@ -326,6 +327,7 @@ main {
 	padding: 1em 2em 3em;
 	margin: 0 auto;
 	background-color: white;
+	min-height: calc(125vh - 939px);
 }
 
 .container-full {

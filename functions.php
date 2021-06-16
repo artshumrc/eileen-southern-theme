@@ -44,4 +44,3 @@ function eileen_nav_main()
     return $view->navigation()->menu($nav);
     // return $view->navigation()->menu($nav)->setPartial('/partials/menu');
 }
-
