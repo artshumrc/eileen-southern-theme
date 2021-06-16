@@ -104,27 +104,27 @@
                     <ul class="menu">
                         <li class="category-name dark-yellow pad-top">Exhibition
                             <ul>
-                                <li class="page-link dark-yellow-bg"><a href="career">Life + Career</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="timeline">Timeline</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="scholarship">Scholarship</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="teaching">Teaching</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="map">Map</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="/career">Life + Career</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="/timeline">Timeline</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="/scholarship">Scholarship</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="/teaching">Teaching</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="/map">Map</a></li>
 
                             </ul>
                         </li>
                         <li class="category-name light-teal">Gallery
                             <ul>
-                                <li class="page-link light-teal-bg"><a href="gallery">Images</a></li>
-                                <li class="page-link light-teal-bg"><a href="interviews">Interviews</a></li>
+                                <li class="page-link light-teal-bg"><a href="/items/browse">Images</a></li>
+                                <li class="page-link light-teal-bg"><a href="/interviews">Interviews</a></li>
                             </ul>
                         </li>
                         <li class="category-name orange">About
                             <ul>
-                                <li class="page-link orange-bg"><a href="about">About the Project</a></li>
-                                <li class="page-link orange-bg"><a href="glossary">Glossary</a></li>
-                                <li class="page-link orange-bg"><a href="team">Our Team</a></li>
-                                <li class="page-link orange-bg"><a href="contact">Contact</a></li>
-                                <li class="page-link orange-bg"><a href="bibliography">Bibliography</a></li>
+                                <li class="page-link orange-bg"><a href="/about">About the Project</a></li>
+                                <li class="page-link orange-bg"><a href="/glossary">Glossary</a></li>
+                                <li class="page-link orange-bg"><a href="/team">Our Team</a></li>
+                                <li class="page-link orange-bg"><a href="/contact">Contact</a></li>
+                                <li class="page-link orange-bg"><a href="/bibliography">Bibliography</a></li>
                             </ul>
                         </li>
                     </ul>                   
