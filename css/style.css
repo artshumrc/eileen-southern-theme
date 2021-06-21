@@ -643,7 +643,7 @@ main {
 	padding:2em 0;
 }
 
-.single-pub-page .vid-caption{
+.single-pub-page .vid-caption, .exhibit-item-caption > p{
 	font-size: 0.9em;
 	color:grey;
 	padding-top:1em;
