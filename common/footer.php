@@ -8,7 +8,7 @@
         <li>|</li>
         <li><a href="/timeline">Timeline</a></li>
         <li>|</li>
-        <li><a href="/scholarship">Scholarship</a></li>
+        <li><a href="/exhibits/show/scholarship/">Scholarship</a></li>
         <li>|</li>
         <li><a href="/teaching">Teaching</a></li>
         <li>|</li>

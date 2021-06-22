@@ -639,6 +639,13 @@ main {
 	margin-bottom:0.5em;
 }
 
+.pub-column img {
+	box-shadow: 6px 6px 0px black;
+	max-height: 16em;
+	width:auto; 
+	margin-bottom:0.5em;
+}
+
 .single-pub-page{
 	padding:2em 0;
 }
