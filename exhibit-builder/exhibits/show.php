@@ -13,14 +13,23 @@ echo head(array(
 
     debug_to_console($this);
 
-    function getBanner($exhibitPage, $slugMap){
+    $serverName = $_SERVER['SERVER_NAME'];
+    $prod = false;
+    $fileDir = '/files/theme_uploads/';
+    if($serverName == 'eileensouthern.omeka.fas.harvard.edu'){
+        $prod = true;
+        $fileDir = 'https://s3.amazonaws.com/atg-prod-oaas-files/eileensouthern/theme_uploads/';
+    }
+
+    function getBanner($exhibitPage, $slugMap, $fileDir){
         // debug_to_console("getBanner");
         // debug_to_console($exhibitPage);
         $config_var_name = $slugMap[$exhibitPage->slug];
         $banner = get_theme_option($config_var_name);
         // debug_to_console($banner);
         if($banner){
-            return '/files/theme_uploads/' . $banner;
+            $fullpath = $fileDir . $banner;
+            return $fullpath;
         } else {
             return false;
         }
@@ -36,7 +45,7 @@ echo head(array(
 <main>
     <?php if(getBanner($exhibit_page, $slugMap))?>
     <div class="banners">
-        <img src="<?php echo getBanner($exhibit_page, $slugMap); ?>" >
+        <img src="<?php echo getBanner($exhibit_page, $slugMap, $fileDir); ?>" >
         <p class="caption"><?php echo getBannerCaption($exhibit_page, $slugMap); ?></p>
     </div>
     <div class="container-narrow">

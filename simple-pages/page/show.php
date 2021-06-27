@@ -10,11 +10,21 @@
     $requestUri = $_SERVER['REQUEST_URI'];
     $pageName = ltrim($requestUri, '/'); // strip the leading slash
 
-    function getBanner($page){
+    $serverName = $_SERVER['SERVER_NAME'];
+    $prod = false;
+    $fileDir = '/files/theme_uploads/';
+    if($serverName == 'eileensouthern.omeka.fas.harvard.edu'){
+        $prod = true;
+        $fileDir = 'https://s3.amazonaws.com/atg-prod-oaas-files/eileensouthern/theme_uploads/';
+    }
+    debug_to_console($fileDir);
+
+    function getBanner($page, $fileDir){
         $banner_var = $page . '_banner';
-        $banner = get_theme_option($banner_var);
-        if($banner){
-            return '/files/theme_uploads/' . $banner;
+        $bannerImg = get_theme_option($banner_var);
+        if($bannerImg){
+            $fullpath = $fileDir . $bannerImg;
+            return $fullpath;
         } else {
             return false;
         }
@@ -29,7 +39,7 @@
 
 <main>
     <?php
-        $banner = getBanner($pageName);
+        $banner = getBanner($pageName, $fileDir);
         if($banner):
     ?>
     <div class="banners">
