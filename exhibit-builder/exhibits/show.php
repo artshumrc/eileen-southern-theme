@@ -8,7 +8,8 @@ echo head(array(
     $slugMap = array(
         "the-music-of-black-americans" => "scholarship_moba_banner",
         "the-black-perspective-in-music" => "scholarship_black_perspective_banner",
-        "renaissance-scholarship" => "scholarship_renaissance_banner"
+        "renaissance-scholarship" => "scholarship_renaissance_banner",
+        "interviews" => "interviews_banner"
     );
 
     debug_to_console($this);
@@ -40,10 +41,11 @@ echo head(array(
         $caption = get_theme_option($config_var_name);
         return $caption;
     }
+
 ?>
 
 <main>
-    <?php if(getBanner($exhibit_page, $slugMap))?>
+    <?php if(getBanner($exhibit_page, $slugMap, $fileDir))?>
     <div class="banners">
         <img src="<?php echo getBanner($exhibit_page, $slugMap, $fileDir); ?>" >
         <p class="caption"><?php echo getBannerCaption($exhibit_page, $slugMap); ?></p>
@@ -65,7 +67,7 @@ echo head(array(
         <?php endif; ?>
 
         <div role="main" id="exhibit-blocks">
-        <?php exhibit_builder_render_exhibit_page(); ?>
+            <?php exhibit_builder_render_exhibit_page(); ?>
         </div>
 
     </div><!-- end div.container-narrow -->
