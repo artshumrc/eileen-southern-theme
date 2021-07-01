@@ -14,6 +14,7 @@ echo head(array(
 
     debug_to_console($this);
 
+    // Prod or local - S3 plugin
     $serverName = $_SERVER['SERVER_NAME'];
     $prod = false;
     $fileDir = '/files/theme_uploads/';
@@ -22,12 +23,19 @@ echo head(array(
         $fileDir = 'https://s3.amazonaws.com/atg-prod-oaas-files/eileensouthern/theme_uploads/';
     }
 
+    // which exhibit?
+    $interviews = false;
+    if($exhibit_page->slug == 'interviews'){
+        $interviews = true;
+    }
+
     function getBanner($exhibitPage, $slugMap, $fileDir){
         // debug_to_console("getBanner");
-        // debug_to_console($exhibitPage);
+        //debug_to_console($exhibitPage);
         $config_var_name = $slugMap[$exhibitPage->slug];
         $banner = get_theme_option($config_var_name);
         // debug_to_console($banner);
+        // debug_to_console(img($banner));
         if($banner){
             $fullpath = $fileDir . $banner;
             return $fullpath;
@@ -42,6 +50,39 @@ echo head(array(
         return $caption;
     }
 
+    
+
+    /**
+     * Render the markup for an exhibit page.
+     *
+     * @param ExhibitPage|null $exhibitPage
+     */
+    function exhibit_builder_render_exhibit_page_southern($exhibitPage = null)
+    {
+        if ($exhibitPage === null) {
+            $exhibitPage = get_current_record('exhibit_page');
+        }
+        
+        $blocks = $exhibitPage->ExhibitPageBlocks;
+        $rawAttachments = $exhibitPage->getAllAttachments();
+        $attachments = array();
+        foreach ($rawAttachments as $attachment) {
+            $attachments[$attachment->block_id][] = $attachment;
+        }
+        foreach ($blocks as $index => $block) {
+            $layout = $block->getLayout();
+            // debug_to_console($layout->getViewPartial()); //exhibit_layouts/file-text/layout.php
+            echo '<div class="exhibit-block layout-' . html_escape($layout->id) . '">';
+            echo get_view()->partial($layout->getViewPartial(), array(
+                'index' => $index,
+                'options' => $block->getOptions(),
+                'text' => get_view()->shortcodes($block->text),
+                'attachments' => array_key_exists($block->id, $attachments) ? $attachments[$block->id] : array(),
+                'block' => $block,
+            ));
+            echo '</div>';
+        }
+    }
 ?>
 
 <main>
@@ -50,8 +91,13 @@ echo head(array(
         <img src="<?php echo getBanner($exhibit_page, $slugMap, $fileDir); ?>" >
         <p class="caption"><?php echo getBannerCaption($exhibit_page, $slugMap); ?></p>
     </div>
+    <?php if($interviews): ?>
+    <div class="container-wide">
+    <div class="container-wide clear-bg">
+    <?php else: ?>
     <div class="container-narrow">
         <h3 class="txt-center aos-init aos-animate" data-aos="fade-in"><?php echo metadata('exhibit_page', 'title');?></h3>
+    <?php endif;?>
         <?php if ($exhibitNavOption == 'full'): ?>
         <nav id="exhibit-pages" class="full">
             <?php echo exhibit_builder_page_nav(); ?>
@@ -67,10 +113,10 @@ echo head(array(
         <?php endif; ?>
 
         <div role="main" id="exhibit-blocks">
-            <?php exhibit_builder_render_exhibit_page(); ?>
+            <?php exhibit_builder_render_exhibit_page_southern(); ?>
         </div>
-
-    </div><!-- end div.container-narrow -->
+        <?php if($interviews){ echo '</div>'; } ?>
+    </div><!-- end div container-wide or container-narrow -->
 
     <?php
         debug_to_console($exhibit_page);
