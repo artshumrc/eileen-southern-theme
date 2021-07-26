@@ -6,6 +6,14 @@
 <?php // echo pagination_links(); ?>
 
 <main>
+    
+    <?php
+        // From the admin theme config
+        $gallery_text = get_theme_option('Gallery Text');
+        if($gallery_text){
+            echo($gallery_text);
+        }  
+    ?>
     <div class="container-wide">
         <div class="flex-column gallery-container">
             <?php foreach (loop('items') as $item): ?>
