@@ -57,8 +57,8 @@
     <?php if($pageName == 'timeline'): ?>
     <div class="container-wide white-bg">
     <?php
-        $event_records = get_records('Item', array('type'=>'Event'));
-        $event_tags = get_records('Item', array('tags'=>'Event'));
+        $event_records = get_records('Item', array('type'=>'Event'), 200);
+        $event_tags = get_records('Item', array('tags'=>'Event'), 200);
         $events = array_merge($event_records, $event_tags);
         debug_to_console($events);
 
