@@ -95,6 +95,12 @@
         // print_r($arr);
         // debug_to_console($events);
 
+        function print_year($item){
+            $omeka_date_str = metadata($item, array('Dublin Core', 'Date'));
+            $date = make_date_obj($omeka_date_str);
+            return $date->format('Y');
+        }
+
         foreach ($events as $item):
             $file=null;
             if($item->getFile(0)){
@@ -107,7 +113,7 @@
         </div>
         <div class="timeline-data-container">
             <h2 class="timeline-event-date">
-                <?php echo metadata($item, array('Dublin Core', 'Date')); ?>
+                <?php echo print_year($item); ?>
             </h2>
             <h4 class="timeline-event-title">
                 <?php echo metadata($item, 'display_title'); ?>
