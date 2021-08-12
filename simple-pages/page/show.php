@@ -109,18 +109,16 @@
     ?>
     <div class="timeline-item">
         <div class="timeline-image-container">
-            <img data-aos="fade-up" src="<?php if($file){ echo metadata($file, 'thumbnail_uri');}?>" class="aos-init aos-animate">
+            <?php if($file): ?>
+                <a class="item-link" href="<?php echo metadata($item, 'permalink');?>">
+                    <img data-aos="fade-up" src="<?php echo metadata($file, 'thumbnail_uri');?>" class="aos-init aos-animate">
+                </a>
+            <?php endif; ?>
         </div>
         <div class="timeline-data-container">
             <h2 class="timeline-event-date">
                 <?php echo print_year($item); ?>
             </h2>
-            <h4 class="timeline-event-title">
-                <?php echo metadata($item, 'display_title'); ?>
-            </h4>
-            <h5 class="timeline-category">
-                <?php echo metadata($item, array('Dublin Core', 'Format')); ?>
-            </h5>
             <div class="timeline-description">
                 <?php echo metadata($item, array('Dublin Core', 'Description')); ?>
             </div>
