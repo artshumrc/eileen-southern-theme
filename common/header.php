@@ -37,6 +37,10 @@
     queue_css_url('//fonts.googleapis.com/css2?family=Oswald:wght@600&display=swap');
     queue_css_url('//fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400&display=swap');
 
+    // Lightbox
+    // queue_css_file($file, $media = 'all', $conditional = false, $dir = 'css', $version = OMEKA_VERSION)
+    queue_css_file('lightbox', 'all', false, 'javascripts/vendor/lightbox2/dist/css');
+
     echo head_css();
 
     echo theme_header_background();
@@ -59,7 +63,10 @@
     queue_js_file('vendor/selectivizr', 'javascripts', array('conditional' => '(gte IE 6)&(lte IE 8)'));
     queue_js_file('vendor/respond');
     queue_js_file('vendor/jquery-accessibleMegaMenu');
-    queue_js_file('vendor/aos'); /** Southern */
+    /** Southern JS */
+    queue_js_file('vendor/aos');
+    queue_js_file('vendor/lightbox2/dist/js/lightbox');
+
     queue_js_file('globals');
     queue_js_file('default');
     echo head_js();

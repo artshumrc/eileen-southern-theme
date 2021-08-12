@@ -14,7 +14,9 @@
     <div class="container-wide">
         <div class="flex-column">
           <div class="gallery-image-single">
-            <img data-aos="fade-up" src="<?php if($file){ echo metadata($file, 'fullsize_uri');}?>">
+            <a data-lightbox="<?php echo $item->id; ?>" href="<?php if($file){ echo metadata($file, 'fullsize_uri');}?>">
+              <img data-aos="fade-up" src="<?php if($file){ echo metadata($file, 'fullsize_uri');}?>">
+            </a>
           </div>
           <div class="gallery-description-single">
             <h6>Object <?php echo $item->id . '/' . total_records('Item');?> </h6>
