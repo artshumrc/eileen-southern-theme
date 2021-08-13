@@ -60,7 +60,6 @@
         $event_records = get_records('Item', array('type'=>'Event'), 200);
         $event_tags = get_records('Item', array('tags'=>'Event'), 200);
         $events = array_merge($event_records, $event_tags);
-        debug_to_console($events);
 
         function make_date_obj($dateStr){
             if(substr_count($dateStr, "-") == 2){
@@ -91,9 +90,6 @@
             return $dateAObj > $dateBObj;
         }
         usort($events, "date_sort");
-        debug_to_console($events);
-        // print_r($arr);
-        // debug_to_console($events);
 
         function print_year($item){
             $omeka_date_str = metadata($item, array('Dublin Core', 'Date'));
@@ -104,12 +100,12 @@
         foreach ($events as $item):
             $file=null;
             if($item->getFile(0)){
-                $file = get_record_by_id('File', $item->getFile(0)->id);
+                $first_file = get_record_by_id('File', $item->getFile(0)->id);
             }
     ?>
     <div class="timeline-item">
         <div class="timeline-image-container">
-            <?php if($file): ?>
+            <?php if($first_file): ?>
                 <a class="item-link" href="<?php echo metadata($item, 'permalink');?>">
                     <img data-aos="fade-up" src="<?php echo metadata($file, 'thumbnail_uri');?>" class="aos-init aos-animate">
                 </a>

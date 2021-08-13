@@ -1,9 +1,12 @@
 <?php 
     echo head(array('title' => 'Gallery','bodyclass' => 'item show'));
-    $file=null;
+    $featured_file=null;
     if($item->getFile(0)){
-        $file = get_record_by_id('File', $item->getFile(0)->id);
+        $featured_file = get_record_by_id('File', $item->getFile(0)->id);
     }
+      $files = $item->getFiles();
+      debug_to_console("FILES");
+      debug_to_console($files);
 
     all_element_texts('item', array(
         'show_element_set_headings' => false,
@@ -14,9 +17,26 @@
     <div class="container-wide">
         <div class="flex-column">
           <div class="gallery-image-single">
-            <a data-lightbox="<?php echo $item->id; ?>" href="<?php if($file){ echo metadata($file, 'fullsize_uri');}?>">
-              <img data-aos="fade-up" src="<?php if($file){ echo metadata($file, 'fullsize_uri');}?>">
+            <a data-lightbox="<?php echo 'lightbox-item-' . $item->id; ?>" href="<?php if($featured_file){ echo metadata($featured_file, 'fullsize_uri');}?>">
+              <img data-aos="fade-up" src="<?php if($featured_file){ echo metadata($featured_file, 'fullsize_uri');}?>">
             </a>
+            <div class="all-item-images">
+              <?php
+                $other_files = array_slice($files, 1);
+                if(count($other_files) > 0){
+                  echo file_markup(
+                    $other_files,
+                    array(
+                      'imageSize' => 'square_thumbnail',
+                      'linkAttributes' => array(
+                        'rel' => 'lightbox',
+                        'data-lightbox' => 'lightbox-item-' . $item->id
+                      )
+                    )
+                  );
+                }
+              ?>
+          </div>
           </div>
           <div class="gallery-description-single">
             <h6>Object <?php echo $item->id . '/' . total_records('Item');?> </h6>

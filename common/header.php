@@ -97,7 +97,7 @@
         </header>
 
         <div id="wrap">
-            <div class="nav-container" id="navbar">
+            <div class="nav-container <?php if(current_user()){ echo 'omeka_authenticated'; } ?>" id="navbar">
                 <div class="logo">
                     <a href="/">
                         <h2>Eileen Southern</h2>
