@@ -98,7 +98,7 @@
         }
 
         foreach ($events as $item):
-            $file=null;
+            $first_file=null;
             if($item->getFile(0)){
                 $first_file = get_record_by_id('File', $item->getFile(0)->id);
             }
@@ -107,7 +107,7 @@
         <div class="timeline-image-container">
             <?php if($first_file): ?>
                 <a class="item-link" href="<?php echo metadata($item, 'permalink');?>">
-                    <img data-aos="fade-up" src="<?php echo metadata($file, 'thumbnail_uri');?>" class="aos-init aos-animate">
+                    <img data-aos="fade-up" src="<?php echo metadata($first_file, 'thumbnail_uri');?>" class="aos-init aos-animate">
                 </a>
             <?php endif; ?>
         </div>
