@@ -116,7 +116,14 @@
                 <?php echo print_year($item); ?>
             </h2>
             <div class="timeline-description">
-                <?php echo metadata($item, array('Dublin Core', 'Description')); ?>
+                <?php 
+                    if($item->item_type_id){
+                        $item_type_metadata = item_type_elements($item);
+                        if($item_type_metadata){
+                            echo($item_type_metadata['Timeline Description']);
+                        }
+                    }
+                ?>
             </div>
         </div>
     </div>
