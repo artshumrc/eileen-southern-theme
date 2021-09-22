@@ -1,17 +1,54 @@
 <?php echo head(array('title' => metadata('exhibit', 'title'), 'bodyclass'=>'exhibits summary')); ?>
 
 <!-- <h1><?php //echo metadata('exhibit', 'title'); ?></h1> -->
-<?php //echo exhibit_builder_page_nav(); ?>
+<?php 
+    //echo exhibit_builder_page_nav();
+
+    /** Set up variables based on page */
+    /* TODO not this */
+    $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
+    $requestUri = $_SERVER['REQUEST_URI'];
+    //$pageName = ltrim($requestUri, '/'); // strip the leading slash
+    $pageName = strtolower($exhibit->title);
+
+    $serverName = $_SERVER['SERVER_NAME'];
+    $prod = false;
+    $fileDir = '/files/theme_uploads/';
+    if($serverName == 'eileensouthern.omeka.fas.harvard.edu'){
+        $prod = true;
+        $fileDir = 'https://s3.amazonaws.com/atg-prod-oaas-files/eileensouthern/theme_uploads/';
+    }
+    function getBanner($page, $fileDir){
+        $banner_var = $page . '_banner';
+        $bannerImg = get_theme_option($banner_var);
+        if($bannerImg){
+            $fullpath = $fileDir . $bannerImg;
+            return $fullpath;
+        } else {
+            return false;
+        }
+    }
+
+    function getBannerCaption($page){
+        $caption_var = $page . '_banner_caption';
+        $caption = get_theme_option($caption_var);
+        return $caption;
+    }
+?>
 
 <main>
     <?php
     // $image = getCoverImage();
-    $cover_image = record_image('exhibit', 'fullsize');
-    debug_to_console($cover_image);
-    if($cover_image):
+    // $cover_image = record_image('exhibit', 'fullsize');
+    // debug_to_console($cover_image);
+    $banner = getBanner($pageName, $fileDir);
+    if($banner):
+    // if($cover_image):
     ?>
         <div class="banners">
-            <?php echo $cover_image; ?>
+            <?php //echo $cover_image; ?>
+            <img src="<?php echo $banner; ?>">
+            <p class="caption"><?php echo getBannerCaption($pageName); ?></p>
         </div>
     <?php endif; ?>
     <div id="primary" class="container-narrow">
@@ -43,11 +80,14 @@
             <div class="flex-column aos-init aos-animate" data-aos="fade-up">
             <?php 
             foreach($pages as $page):
-                debug_to_console($page);
                 $block_attachments = $page->getAllAttachments();
-                $first_attachment = null;
+                // $first_attachment = null;
+                $file_uri = null;
+                $recordUrl = $page->getRecordUrl();
                 if($block_attachments){
-                    $first_attachment = $this->exhibitAttachment($block_attachments[0], array('imageSize' => 'fullsize'));
+                    $first_attachment_file = $block_attachments[0]->getFile();
+                    $file_uri = $first_attachment_file->getWebPath();
+                    $page_title = $page->title;
                 }
                 if( ($page->order + 1) % 3 == 0){
                     $right_rule = false;
@@ -56,14 +96,13 @@
                 }
             ?>
                 <div class="publications-container pub-column aos-init aos-animate <?php if($right_rule){ echo 'right-rule'; }?>" data-aos="fade-up">
-                    <?php if($first_attachment): ?>
-                        <a href="<? echo $page->getRecordUrl(); ?>">
-                            <?php echo $first_attachment; ?>
+                    <?php if($file_uri): ?>
+                        <a href="<?php echo $page->getRecordUrl(); ?>">
+                            <img alt="<?php echo($page_title); ?>" src="<?php echo($file_uri); ?>" title="<?php echo($page_title);?>">
                         </a>
-                    <?php 
-                    endif; ?>
+                    <?php endif; ?>
                     <h3 class="txt-center">
-                        <a href="<? echo $page->getRecordUrl(); ?>" class="dark-red"><?php echo $page->title; ?></a>
+                        <a href="<?php echo $page->getRecordUrl(); ?>" class="dark-red"><?php echo $page->title; ?></a>
                     </h3>
                 </div>
             <?php endforeach; ?>
