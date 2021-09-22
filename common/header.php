@@ -114,7 +114,7 @@
                                 <li class="page-link dark-yellow-bg"><a href="/career">Life + Career</a></li>
                                 <li class="page-link dark-yellow-bg"><a href="/timeline">Timeline</a></li>
                                 <li class="page-link dark-yellow-bg"><a href="/exhibits/show/scholarship">Scholarship</a></li>
-                                <li class="page-link dark-yellow-bg"><a href="/teaching">Teaching</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="/exhibits/show/teaching">Teaching</a></li>
                                 <li class="page-link dark-yellow-bg"><a href="/map">Map</a></li>
 
                             </ul>
