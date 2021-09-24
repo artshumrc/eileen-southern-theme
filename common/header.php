@@ -111,7 +111,7 @@
                     <ul class="menu">
                         <li class="category-name dark-yellow pad-top">Exhibition
                             <ul>
-                                <li class="page-link dark-yellow-bg"><a href="/career">Life + Career</a></li>
+                                <li class="page-link dark-yellow-bg"><a href="/exhibits/show/lifecareer">Life + Career</a></li>
                                 <li class="page-link dark-yellow-bg"><a href="/timeline">Timeline</a></li>
                                 <li class="page-link dark-yellow-bg"><a href="/exhibits/show/scholarship">Scholarship</a></li>
                                 <li class="page-link dark-yellow-bg"><a href="/exhibits/show/teaching">Teaching</a></li>

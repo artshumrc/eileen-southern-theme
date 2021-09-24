@@ -4,13 +4,13 @@
 
     <footer role="contentinfo">
       <ul class="bottom-nav">
-        <li><a href="/career">Life + Career</a></li>
+        <li><a href="/exhibits/show/lifecareer">Life + Career</a></li>
         <li>|</li>
         <li><a href="/timeline">Timeline</a></li>
         <li>|</li>
         <li><a href="/exhibits/show/scholarship/">Scholarship</a></li>
         <li>|</li>
-        <li><a href="/teaching">Teaching</a></li>
+        <li><a href="/exhibits/show/teaching">Teaching</a></li>
         <li>|</li>
         <li><a href="/map">Map</a></li>
         <li>|</li>
