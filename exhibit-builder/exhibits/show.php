@@ -91,10 +91,14 @@ echo head(array(
         <img src="<?php echo getBanner($exhibit_page, $slugMap, $fileDir); ?>" >
         <p class="caption"><?php echo getBannerCaption($exhibit_page, $slugMap); ?></p>
     </div>
-    <?php if($interviews): ?>
+    <?php if($interviews):
+        $container_size = "wide";
+    ?>
     <div class="container-wide">
     <div class="container-wide clear-bg">
-    <?php else: ?>
+    <?php else:
+        $container_size = "narrow";
+    ?>
     <div class="container-narrow">
         <h3 class="txt-center aos-init aos-animate" data-aos="fade-in"><?php echo metadata('exhibit_page', 'title');?></h3>
     <?php endif;?>
@@ -116,7 +120,7 @@ echo head(array(
             <?php exhibit_builder_render_exhibit_page_southern(); ?>
         </div>
         <?php if($interviews){ echo '</div>'; } ?>
-    </div><!-- end div container-wide or container-narrow -->
+    </div><!-- end div container-wide or container-narrow - but nav also needs to be correct size, thus $container_size -->
 
     <?php
         debug_to_console($exhibit_page);
@@ -132,7 +136,7 @@ echo head(array(
 
         if($filtered):
         ?>
-        <div class="container-wide southern-exhibit-nav">
+        <div class="container-<?php echo $container_size; ?> southern-exhibit-nav">
             <div class="flex-column aos-init aos-animate" data-aos="fade-up">
             <?php 
             foreach($filtered as $page):
