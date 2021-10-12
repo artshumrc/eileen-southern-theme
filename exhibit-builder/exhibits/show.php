@@ -12,7 +12,7 @@ echo head(array(
         "interviews" => "interviews_banner"
     );
 
-    debug_to_console($this);
+    // debug_to_console($this);
 
     // Prod or local - S3 plugin
     $serverName = $_SERVER['SERVER_NAME'];
@@ -92,7 +92,7 @@ echo head(array(
         <p class="caption"><?php echo getBannerCaption($exhibit_page, $slugMap); ?></p>
     </div>
     <?php if($interviews):
-        $container_size = "wide";
+        $container_size = "wide"; // May be able to get rid of this
     ?>
     <div class="container-wide">
     <div class="container-wide clear-bg">
@@ -120,10 +120,10 @@ echo head(array(
             <?php exhibit_builder_render_exhibit_page_southern(); ?>
         </div>
         <?php if($interviews){ echo '</div>'; } ?>
-    </div><!-- end div container-wide or container-narrow - but nav also needs to be correct size, thus $container_size -->
+    </div><!-- end div container-wide or container-narrow -->
 
     <?php
-        debug_to_console($exhibit_page);
+        // debug_to_console($exhibit_page);
         // debug_to_console($exhibit);
         $pages = $exhibit->PagesByParent[0];
         // debug_to_console($pages);
@@ -136,17 +136,22 @@ echo head(array(
 
         if($filtered):
         ?>
-        <div class="container-<?php echo $container_size; ?> southern-exhibit-nav">
+        <div class="container-wide southern-exhibit-nav">
             <div class="flex-column aos-init aos-animate" data-aos="fade-up">
-            <?php 
+            <?php
+            $i=0;
             foreach($filtered as $page):
-                // debug_to_console($page);
+                debug_to_console($page);
                 $block_attachments = $page->getAllAttachments();
                 $first_attachment = null;
                 if($block_attachments){
                     $first_attachment = $this->exhibitAttachment($block_attachments[0], array('imageSize' => 'fullsize'));
                 }
-                if( ($page->order + 1) % 3 == 0){
+                $last_item = false;
+                if(++$i == count($filtered)){
+                    $last_item = true;
+                }
+                if( (($page->order + 1) % 3 == 0) || $last_item){
                     $right_rule = false;
                 } else {
                     $right_rule = true;

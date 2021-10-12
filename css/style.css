@@ -695,6 +695,11 @@ h4.team-subhead{
 	padding: 3em 0;
 }
 
+/** exhibit block fix - was messing up nav as it had height:0px despite containing a file **/
+#exhibit-blocks .exhibit-block.layout-file {
+	overflow: hidden
+}
+
 /* alignments ------------------------------------------------------------------------------------ */
 
 .txt-center {
