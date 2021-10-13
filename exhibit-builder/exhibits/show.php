@@ -128,7 +128,6 @@ echo head(array(
             <?php
             $i=0;
             foreach($filtered as $page):
-                debug_to_console($page);
                 $block_attachments = $page->getAllAttachments();
                 $first_attachment = null;
                 if($block_attachments){

@@ -2,13 +2,10 @@
 
 <!-- <h1><?php //echo metadata('exhibit', 'title'); ?></h1> -->
 <?php 
-    //echo exhibit_builder_page_nav();
-
     /** Set up variables based on page */
     /* TODO not this */
     $curPageName = substr($_SERVER["SCRIPT_NAME"],strrpos($_SERVER["SCRIPT_NAME"],"/")+1);  
     $requestUri = $_SERVER['REQUEST_URI'];
-    //$pageName = ltrim($requestUri, '/'); // strip the leading slash
     $pageName = strtolower($exhibit->title);
 
     $serverName = $_SERVER['SERVER_NAME'];
@@ -38,12 +35,8 @@
 
 <main>
     <?php
-    // $image = getCoverImage();
-    // $cover_image = record_image('exhibit', 'fullsize');
-    // debug_to_console($cover_image);
     $banner = getBanner($pageName, $fileDir);
     if($banner):
-    // if($cover_image):
     ?>
         <div class="banners">
             <?php //echo $cover_image; ?>
@@ -76,7 +69,6 @@
             <?php 
             foreach($pages as $page):
                 $block_attachments = $page->getAllAttachments();
-                // $first_attachment = null;
                 $file_uri = null;
                 $recordUrl = $page->getRecordUrl();
                 if($block_attachments){
