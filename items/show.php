@@ -4,9 +4,7 @@
     if($item->getFile(0)){
         $featured_file = get_record_by_id('File', $item->getFile(0)->id);
     }
-      $files = $item->getFiles();
-      debug_to_console("FILES");
-      debug_to_console($files);
+    $files = $item->getFiles();
 
     all_element_texts('item', array(
         'show_element_set_headings' => false,

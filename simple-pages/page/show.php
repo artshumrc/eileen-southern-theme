@@ -17,7 +17,6 @@
         $prod = true;
         $fileDir = 'https://s3.amazonaws.com/atg-prod-oaas-files/eileensouthern/theme_uploads/';
     }
-    debug_to_console($fileDir);
 
     function getBanner($page, $fileDir){
         $banner_var = $page . '_banner';

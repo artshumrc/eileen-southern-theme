@@ -122,7 +122,7 @@
                         <li class="category-name light-teal">Gallery
                             <ul>
                                 <li class="page-link light-teal-bg"><a href="/items/browse">Images</a></li>
-                                <li class="page-link light-teal-bg"><a href="/interviews">Interviews</a></li>
+                                <li class="page-link light-teal-bg"><a href="/exhibits/show/interviews">Interviews</a></li>
                             </ul>
                         </li>
                         <li class="category-name orange">About
