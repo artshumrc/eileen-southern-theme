@@ -6,7 +6,7 @@
 
     <?php foreach ($setElements as $elementName => $elementInfo): ?>
     <?php 
-        $ignoreElements = array("Title", "Description", "iframe");
+        $ignoreElements = array("Title", "Description", "iframe", "Timeline Description");
         if (!in_array($elementName, $ignoreElements)): 
     ?>
     <div id="<?php echo text_to_id(html_escape("$setName $elementName")); ?>" class="element">
