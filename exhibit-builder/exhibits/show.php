@@ -1,6 +1,5 @@
 <?php
 echo head(array(
-    // 'title' => metadata('exhibit_page', 'title') . ' &middot; ' . metadata('exhibit', 'title'),
     'title' => metadata('exhibit', 'title'),
     'bodyclass' => 'exhibits show'));
     $exhibitNavOption = get_theme_option('exhibits_nav');
@@ -11,8 +10,6 @@ echo head(array(
         "renaissance-scholarship" => "scholarship_renaissance_banner",
         "interviews" => "interviews_banner"
     );
-
-    // debug_to_console($this);
 
     // Prod or local - S3 plugin
     $serverName = $_SERVER['SERVER_NAME'];
@@ -30,12 +27,8 @@ echo head(array(
     }
 
     function getBanner($exhibitPage, $slugMap, $fileDir){
-        // debug_to_console("getBanner");
-        //debug_to_console($exhibitPage);
         $config_var_name = $slugMap[$exhibitPage->slug];
         $banner = get_theme_option($config_var_name);
-        // debug_to_console($banner);
-        // debug_to_console(img($banner));
         if($banner){
             $fullpath = $fileDir . $banner;
             return $fullpath;
@@ -71,7 +64,6 @@ echo head(array(
         }
         foreach ($blocks as $index => $block) {
             $layout = $block->getLayout();
-            // debug_to_console($layout->getViewPartial()); //exhibit_layouts/file-text/layout.php
             echo '<div class="exhibit-block layout-' . html_escape($layout->id) . '">';
             echo get_view()->partial($layout->getViewPartial(), array(
                 'index' => $index,
@@ -123,16 +115,11 @@ echo head(array(
     </div><!-- end div container-wide or container-narrow -->
 
     <?php
-        // debug_to_console($exhibit_page);
-        // debug_to_console($exhibit);
         $pages = $exhibit->PagesByParent[0];
-        // debug_to_console($pages);
-
         // Filter the current page from the nav
         $filtered = array_filter($pages, function($page) use($exhibit_page){
             return($exhibit_page->slug != $page->slug);
         });
-        // debug_to_console($filtered);
 
         if($filtered):
         ?>

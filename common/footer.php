@@ -16,7 +16,7 @@
         <li>|</li>
         <li><a href="/items/browse">Gallery</a></li>
         <li>|</li>
-        <li><a href="/interviews">Interviews</a></li>
+        <li><a href="/exhibits/show/interviews">Interviews</a></li>
       </ul>
     </footer>
     <div class="footer-image"></div>

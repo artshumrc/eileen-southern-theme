@@ -68,12 +68,7 @@
     </div>
 
     <?php
-    //$pageTree = exhibit_builder_page_tree();
-    // if ($pageTree):
-
-    debug_to_console($exhibit);
     $pages = $exhibit->PagesByParent[0];
-    debug_to_console($pages);
     if($pages):
     ?>
         <div class="container-wide">
