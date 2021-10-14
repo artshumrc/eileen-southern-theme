@@ -90,9 +90,6 @@
             <?php endforeach; ?>
             </div>
         </div>
-        <!-- <nav id="exhibit-pages"> -->
-            <?php //echo $pageTree; ?>
-        <!-- </nav> -->
     <?php endif; ?>
 </main>
 

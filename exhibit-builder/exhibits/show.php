@@ -126,27 +126,23 @@ echo head(array(
         <div class="container-wide southern-exhibit-nav">
             <div class="flex-column aos-init aos-animate" data-aos="fade-up">
             <?php
-            $i=0;
             foreach($filtered as $page):
                 $block_attachments = $page->getAllAttachments();
-                $first_attachment = null;
+                $file_uri = null;
                 if($block_attachments){
-                    $first_attachment = $this->exhibitAttachment($block_attachments[0], array('imageSize' => 'fullsize'));
+                    $first_attachment_file = $block_attachments[0]->getFile();
+                    $file_uri = $first_attachment_file->getWebPath();
                 }
                 $last_item = false;
-                if(++$i == count($filtered)){
-                    $last_item = true;
-                }
             ?>
                 <div class="publications-container pub-column aos-init aos-animate" data-aos="fade-up">
-                    <?php if($first_attachment): ?>
-                        <a href="<? echo $page->getRecordUrl(); ?>">
-                            <?php echo $first_attachment; ?>
+                    <?php if($file_uri):?>
+                        <a href="<?php echo $page->getRecordUrl(); ?>">
+                            <img alt="<?php echo($page->title); ?>" src="<?php echo($file_uri); ?>" title="<?php echo($page->title);?>">
                         </a>
-                    <?php 
-                    endif; ?>
+                    <?php endif; ?>
                     <h3 class="txt-center">
-                        <a href="<? echo $page->getRecordUrl(); ?>" class="dark-red"><?php echo $page->title; ?></a>
+                        <a href="<?php echo $page->getRecordUrl(); ?>" class="dark-red"><?php echo $page->title; ?></a>
                     </h3>
                 </div>
             <?php endforeach; ?>
