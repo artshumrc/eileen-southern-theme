@@ -137,13 +137,8 @@ echo head(array(
                 if(++$i == count($filtered)){
                     $last_item = true;
                 }
-                if( (($page->order + 1) % 3 == 0) || $last_item){
-                    $right_rule = false;
-                } else {
-                    $right_rule = true;
-                }
             ?>
-                <div class="publications-container pub-column aos-init aos-animate <?php if($right_rule){ echo 'right-rule'; }?>" data-aos="fade-up">
+                <div class="publications-container pub-column aos-init aos-animate" data-aos="fade-up">
                     <?php if($first_attachment): ?>
                         <a href="<? echo $page->getRecordUrl(); ?>">
                             <?php echo $first_attachment; ?>

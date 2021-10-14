@@ -76,13 +76,8 @@
                     $file_uri = $first_attachment_file->getWebPath();
                     $page_title = $page->title;
                 }
-                if( ($page->order + 1) % 3 == 0){
-                    $right_rule = false;
-                } else {
-                    $right_rule = true;
-                }
             ?>
-                <div class="publications-container pub-column aos-init aos-animate <?php if($right_rule){ echo 'right-rule'; }?>" data-aos="fade-up">
+                <div class="publications-container pub-column aos-init aos-animate" data-aos="fade-up">
                     <?php if($file_uri): ?>
                         <a href="<?php echo $page->getRecordUrl(); ?>">
                             <img alt="<?php echo($page_title); ?>" src="<?php echo($file_uri); ?>" title="<?php echo($page_title);?>">
