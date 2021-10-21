@@ -8,7 +8,9 @@ echo head(array(
         "the-music-of-black-americans" => "scholarship_moba_banner",
         "the-black-perspective-in-music" => "scholarship_black_perspective_banner",
         "renaissance-scholarship" => "scholarship_renaissance_banner",
-        "interviews" => "interviews_banner"
+        "interviews" => "interviews_banner",
+        "teaching" => "teaching_banner",
+        "life---career" => "career_banner"
     );
 
     // Prod or local - S3 plugin
@@ -78,13 +80,17 @@ echo head(array(
 ?>
 
 <main>
-    <?php if(getBanner($exhibit_page, $slugMap, $fileDir))?>
+    <?php
+        if(getBanner($exhibit_page, $slugMap, $fileDir)):
+    ?>
     <div class="banners">
         <img src="<?php echo getBanner($exhibit_page, $slugMap, $fileDir); ?>" >
         <p class="caption"><?php echo getBannerCaption($exhibit_page, $slugMap); ?></p>
     </div>
-    <?php if($interviews):
-        $container_size = "wide"; // May be able to get rid of this
+    <?php
+        endif;
+        if($interviews):
+            $container_size = "wide"; // May be able to get rid of this
     ?>
     <div class="container-wide">
     <div class="container-wide clear-bg">
