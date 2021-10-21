@@ -604,6 +604,12 @@ main {
     margin-left: 0;
     text-align: none;
 }
+
+/** hide the Omeka item link under YouTube iFrames **/
+.exhibit-items.video-container .exhibit-item-caption {
+    display: none;
+}
+
 /* glossary -------------------------------------------------------------------------------------- */
 
 .glossary-container{
