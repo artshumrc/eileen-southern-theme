@@ -278,7 +278,17 @@ nav ul > li:hover ul li {
     height:38px;
 }
 
-
+/** nav fixes for overlap would add these
+.txt-center {
+	margin-right: -40px;
+}
+.flex-column {
+	margin: 0 -50px
+}
+.pub-column {
+	padding: 0 40px;
+}
+**/
 
 /* Footer ------------------------------------------------------------------------------------ */
 
@@ -709,7 +719,7 @@ h4.team-subhead{
 }
 
 /** exhibit block fix - was messing up nav as it had height:0px despite containing a file **/
-#exhibit-blocks .exhibit-block.layout-file {
+#exhibit-blocks .exhibit-block.layout-file, #exhibit-blocks .exhibit-block.layout-file-text {
 	overflow: hidden
 }
 
