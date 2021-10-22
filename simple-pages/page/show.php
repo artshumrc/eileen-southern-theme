@@ -98,11 +98,15 @@
 
         foreach ($events as $item):
             $first_file=null;
+            $context_event=false;
             if($item->getFile(0)){
                 $first_file = get_record_by_id('File', $item->getFile(0)->id);
             }
+            if(strpos(tag_string($item), "context")){
+                $context_event = true;
+            }
     ?>
-    <div class="timeline-item">
+    <div class="timeline-item<?php if($context_event){ echo ' context';} ?>">
         <div class="timeline-image-container">
             <?php if($first_file): ?>
                 <a class="item-link" href="<?php echo metadata($item, 'permalink');?>">

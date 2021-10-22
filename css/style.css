@@ -453,6 +453,10 @@ main {
   	margin-right: -5.8em;
 }
 
+.context .timeline-event-date {
+    color: var(--dark-teal);
+}
+
 /* gallery  -------------------------------------------------------------------------------------- */
 
 .gallery-column {
