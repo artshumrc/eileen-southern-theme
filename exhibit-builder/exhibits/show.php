@@ -8,7 +8,9 @@ echo head(array(
         "the-music-of-black-americans" => "scholarship_moba_banner",
         "the-black-perspective-in-music" => "scholarship_black_perspective_banner",
         "renaissance-scholarship" => "scholarship_renaissance_banner",
-        "interviews" => "interviews_banner"
+        "interviews" => "interviews_banner",
+        "teaching" => "teaching_banner",
+        "life---career" => "career_banner"
     );
 
     // Prod or local - S3 plugin
@@ -78,13 +80,17 @@ echo head(array(
 ?>
 
 <main>
-    <?php if(getBanner($exhibit_page, $slugMap, $fileDir))?>
+    <?php
+        if(getBanner($exhibit_page, $slugMap, $fileDir)):
+    ?>
     <div class="banners">
         <img src="<?php echo getBanner($exhibit_page, $slugMap, $fileDir); ?>" >
         <p class="caption"><?php echo getBannerCaption($exhibit_page, $slugMap); ?></p>
     </div>
-    <?php if($interviews):
-        $container_size = "wide"; // May be able to get rid of this
+    <?php
+        endif;
+        if($interviews):
+            $container_size = "wide"; // May be able to get rid of this
     ?>
     <div class="container-wide">
     <div class="container-wide clear-bg">
@@ -126,32 +132,23 @@ echo head(array(
         <div class="container-wide southern-exhibit-nav">
             <div class="flex-column aos-init aos-animate" data-aos="fade-up">
             <?php
-            $i=0;
             foreach($filtered as $page):
                 $block_attachments = $page->getAllAttachments();
-                $first_attachment = null;
+                $file_uri = null;
                 if($block_attachments){
-                    $first_attachment = $this->exhibitAttachment($block_attachments[0], array('imageSize' => 'fullsize'));
+                    $first_attachment_file = $block_attachments[0]->getFile();
+                    $file_uri = $first_attachment_file->getWebPath();
                 }
                 $last_item = false;
-                if(++$i == count($filtered)){
-                    $last_item = true;
-                }
-                if( (($page->order + 1) % 3 == 0) || $last_item){
-                    $right_rule = false;
-                } else {
-                    $right_rule = true;
-                }
             ?>
-                <div class="publications-container pub-column aos-init aos-animate <?php if($right_rule){ echo 'right-rule'; }?>" data-aos="fade-up">
-                    <?php if($first_attachment): ?>
-                        <a href="<? echo $page->getRecordUrl(); ?>">
-                            <?php echo $first_attachment; ?>
+                <div class="publications-container pub-column aos-init aos-animate" data-aos="fade-up">
+                    <?php if($file_uri):?>
+                        <a href="<?php echo $page->getRecordUrl(); ?>">
+                            <img alt="<?php echo($page->title); ?>" src="<?php echo($file_uri); ?>" title="<?php echo($page->title);?>">
                         </a>
-                    <?php 
-                    endif; ?>
+                    <?php endif; ?>
                     <h3 class="txt-center">
-                        <a href="<? echo $page->getRecordUrl(); ?>" class="dark-red"><?php echo $page->title; ?></a>
+                        <a href="<?php echo $page->getRecordUrl(); ?>" class="dark-red"><?php echo $page->title; ?></a>
                     </h3>
                 </div>
             <?php endforeach; ?>
