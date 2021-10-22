@@ -1,10 +1,27 @@
 <?php 
     echo head(array('title' => 'Gallery','bodyclass' => 'item show'));
-    $featured_file=null;
-    if($item->getFile(0)){
-        $featured_file = get_record_by_id('File', $item->getFile(0)->id);
+
+    function hasDerivativeImage($file){
+      return $file->has_derivative_image == 1;
     }
-    $files = $item->getFiles();
+
+    function isPDF($file){
+      $types = array('application/pdf', 'application/x-pdf');
+      return in_array($file->mime_type, $types);
+    }
+
+    $all_files = $item->getFiles();
+    // filter out those without derivative images
+    $files_with_derivatives = array_filter($all_files, "hasDerivativeImage");
+
+    $featured_file=null;
+    if(count($files_with_derivatives) > 0){
+      $temp = array_shift($files_with_derivatives);
+      $featured_file = get_record_by_id('File', $temp->id);
+    }
+
+    // Get PDFs from $all_files
+    $pdf_files = array_filter($all_files, "isPDF");
 
     all_element_texts('item', array(
         'show_element_set_headings' => false,
@@ -20,10 +37,9 @@
             </a>
             <div class="all-item-images">
               <?php
-                $other_files = array_slice($files, 1);
-                if(count($other_files) > 0){
+                if(count($files_with_derivatives) > 0){
                   echo file_markup(
-                    $other_files,
+                    $files_with_derivatives,
                     array(
                       'imageSize' => 'square_thumbnail',
                       'linkAttributes' => array(
@@ -35,6 +51,11 @@
                 }
               ?>
           </div>
+          <?php if (count($pdf_files) > 0): ?>
+            <div class="pdf-files">
+              <?php echo file_markup($pdf_files); ?>
+            </div>
+          <?php endif; ?>
           </div>
           <div class="gallery-description-single">
             <h6>Object <?php echo $item->id . '/' . total_records('Item');?> </h6>
